@@ -10,7 +10,8 @@ interface MainToolsProvider {
     fun provideContext(): App
 }
 
-interface FirstFeatureProvider{}
+interface FirstFeatureProvider{
+}
 
 interface SecondFeatureProvider{}
 

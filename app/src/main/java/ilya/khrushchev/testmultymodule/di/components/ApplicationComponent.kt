@@ -6,6 +6,8 @@ import ilya.khrushchev.firstfeature.FirstFeatureExportComponent
 import ilya.khrushchev.secondfeature.SecondFeatureExportComponent
 import ilya.khrushchev.testmultymodule.Application
 import ilya.khrushchev.testmultymodule.di.ApplicationScope
+import ilya.khrushchev.testmultymodule.di.FirstFeatureModule
+import ilya.khrushchev.testmultymodule.navigation.FirstFeatureNavigationModule
 import ilya.khrushchev.thirdfeature.ThirdFeatureExportComponent
 
 @ApplicationScope
@@ -14,7 +16,9 @@ import ilya.khrushchev.thirdfeature.ThirdFeatureExportComponent
         MainToolsProvider::class,
         FirstFeatureProvider::class,
         SecondFeatureProvider::class,
-        ThirdFeatureProvider::class
+        ThirdFeatureProvider::class,
+        FirstFeatureModule::class,
+        FirstFeatureNavigationModule::class
     ]
 )
 interface ApplicationComponent : ApplicationProvider {
@@ -24,9 +28,12 @@ interface ApplicationComponent : ApplicationProvider {
         companion object {
             fun init(app: Application): ApplicationComponent {
                 val mainToolsProvider = DaggerMainToolsComponent.factory().create(app)
-                val firstFeatureProvider = FirstFeatureExportComponent.Initializer.init(mainToolsProvider)
-                val secondFeatureProvider = SecondFeatureExportComponent.Initializer.init(mainToolsProvider)
-                val thirdFeatureProvider = ThirdFeatureExportComponent.Initializer.init(mainToolsProvider)
+                val firstFeatureProvider =
+                    FirstFeatureExportComponent.Initializer.init(mainToolsProvider)
+                val secondFeatureProvider =
+                    SecondFeatureExportComponent.Initializer.init(mainToolsProvider)
+                val thirdFeatureProvider =
+                    ThirdFeatureExportComponent.Initializer.init(mainToolsProvider)
                 return DaggerApplicationComponent.builder()
                     .mainToolsProvider(mainToolsProvider)
                     .firstFeatureProvider(firstFeatureProvider)

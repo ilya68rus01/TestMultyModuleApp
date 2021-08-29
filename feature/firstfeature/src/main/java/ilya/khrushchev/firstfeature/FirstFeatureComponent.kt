@@ -1,7 +1,9 @@
 package ilya.khrushchev.firstfeature
 
 import dagger.Component
+import dagger.Provides
 import ilya.khrushchev.core.ApplicationProvider
+import ilya.khrushchev.firstfeature.navigation.FirstFeatureNavCommandProvider
 
 @Component(
     dependencies = [

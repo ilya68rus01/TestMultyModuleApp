@@ -6,10 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ilya.khrushchev.core.App
+import ilya.khrushchev.firstfeature.navigation.FirstFeatureNavCommandProvider
+import javax.inject.Inject
 
 class FirstFragment : Fragment() {
 
-    fun inject() {
+    @Inject
+    lateinit var navCommandProvider: FirstFeatureNavCommandProvider
+
+    private fun inject() {
         FirstFeatureComponent.Initializer.init(
             (context?.applicationContext as App).getAppComponent()
         ).inject(this)
