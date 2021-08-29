@@ -1,9 +1,7 @@
 package ilya.khrushchev.testmultymodule.di
 
+import dagger.Binds
 import dagger.Module
-import ilya.khrushchev.testmultymodule.navigation.FirstFeatureNavigationModule
+import ilya.khrushchev.firstfeature.navigation.FirstFeatureNavCommandProvider
+import ilya.khrushchev.testmultymodule.navigation.FirstFeatureNavCommandProviderImpl
 
-@Module(includes = arrayOf(
-    FirstFeatureNavigationModule::class)
-)
-interface FirstFeatureModule

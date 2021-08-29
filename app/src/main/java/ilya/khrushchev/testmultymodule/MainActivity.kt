@@ -3,6 +3,7 @@ package ilya.khrushchev.testmultymodule
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -10,5 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         Navigation.findNavController(this, R.id.host_global)
+
+            findNavController(R.id.host_global).navigate(R.id.firstFragment)
     }
 }

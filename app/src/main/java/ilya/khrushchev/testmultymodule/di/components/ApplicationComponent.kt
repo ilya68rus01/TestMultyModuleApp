@@ -1,44 +1,49 @@
 package ilya.khrushchev.testmultymodule.di.components
 
+import android.app.Application
+import android.content.Context
+import com.example.moduleinjector.BaseFeatureApi
 import dagger.Component
-import ilya.khrushchev.core.*
-import ilya.khrushchev.firstfeature.FirstFeatureExportComponent
-import ilya.khrushchev.secondfeature.SecondFeatureExportComponent
-import ilya.khrushchev.testmultymodule.Application
+import ilya.khrushchev.core.providers.ContextProvider
+import ilya.khrushchev.core.providers.DaggerContextComponent
+import ilya.khrushchev.core.providers.FirstFeatureDeps
+import ilya.khrushchev.testmultymodule.ExampleApp
 import ilya.khrushchev.testmultymodule.di.ApplicationScope
-import ilya.khrushchev.testmultymodule.di.FirstFeatureModule
-import ilya.khrushchev.testmultymodule.navigation.FirstFeatureNavigationModule
-import ilya.khrushchev.thirdfeature.ThirdFeatureExportComponent
+
+interface ApplicationProvider {
+
+}
 
 @ApplicationScope
 @Component(
     dependencies = [
-        MainToolsProvider::class,
-        FirstFeatureProvider::class,
-        SecondFeatureProvider::class,
-        ThirdFeatureProvider::class,
-        FirstFeatureModule::class,
-        FirstFeatureNavigationModule::class
+        ContextProvider::class
+//        ThirdFeatureProvider::class,
+//        FirstFeatureModule::class,
+//        FirstFeatureNavigationModule::class
     ]
 )
-interface ApplicationComponent : ApplicationProvider {
-    fun inject(app: Application)
+interface ApplicationComponent : BaseFeatureApi, FirstFeatureDeps  {
 
-    class Initializer private constructor() {
+    fun inject(app: ExampleApp)
+
+    class Builder {
         companion object {
-            fun init(app: Application): ApplicationComponent {
-                val mainToolsProvider = DaggerMainToolsComponent.factory().create(app)
-                val firstFeatureProvider =
-                    FirstFeatureExportComponent.Initializer.init(mainToolsProvider)
-                val secondFeatureProvider =
-                    SecondFeatureExportComponent.Initializer.init(mainToolsProvider)
-                val thirdFeatureProvider =
-                    ThirdFeatureExportComponent.Initializer.init(mainToolsProvider)
+            fun build(app: ExampleApp): ApplicationComponent {
+                val contextProvider = DaggerContextComponent.factory().create(app)
+//                val mainToolsProvider = DaggerMainToolsComponent.factory().create(app)
+//                val firstFeatureProvider =
+//                    FirstFeatureExportComponent.Initializer.init(mainToolsProvider)
+//                val secondFeatureProvider =
+//                    SecondFeatureExportComponent.Initializer.init(mainToolsProvider)
+//                val thirdFeatureProvider =
+//                    ThirdFeatureExportComponent.Initializer.init(mainToolsProvider)
                 return DaggerApplicationComponent.builder()
-                    .mainToolsProvider(mainToolsProvider)
-                    .firstFeatureProvider(firstFeatureProvider)
-                    .secondFeatureProvider(secondFeatureProvider)
-                    .thirdFeatureProvider(thirdFeatureProvider)
+                    .contextProvider(contextProvider)
+//                    .mainToolsProvider(mainToolsProvider)
+//                    .firstFeatureProvider(firstFeatureProvider)
+//                    .secondFeatureProvider(secondFeatureProvider)
+//                    .thirdFeatureProvider(thirdFeatureProvider)
                     .build()
             }
         }
