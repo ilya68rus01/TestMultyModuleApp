@@ -7,12 +7,13 @@ import ilya.khrushchev.testmultymodule.di.components.ApplicationComponent
 
 class Application: Application(), App {
 
-    val applicationComponent: ApplicationComponent by lazy {
+    private val applicationComponent: ApplicationComponent by lazy {
         ApplicationComponent.Initializer.init(this@Application)
     }
 
     override fun onCreate() {
         super.onCreate()
+        applicationComponent.inject(this)
     }
 
     override fun getAppComponent(): ApplicationProvider = applicationComponent
