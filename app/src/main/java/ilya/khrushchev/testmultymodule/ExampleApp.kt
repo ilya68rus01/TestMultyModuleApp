@@ -7,6 +7,8 @@ import ilya.khrushchev.core.providers.FirstFeatureDeps
 import ilya.khrushchev.firstfeature.FirstFeatureApi
 import ilya.khrushchev.firstfeature.FirstFeatureComponentHolder
 import ilya.khrushchev.firstfeature.FirstFeatureDependencies
+import ilya.khrushchev.secondfeature.SecondFeatureComponentHolder
+import ilya.khrushchev.secondfeature.SecondFeatureDependencies
 import ilya.khrushchev.testmultymodule.di.components.ApplicationComponent
 import ilya.khrushchev.testmultymodule.di.components.ApplicationComponent.Builder.Companion.build
 
@@ -38,6 +40,17 @@ class ExampleApp: Application() {
                 api1 = appComponent
             ) { holder, appComponent ->
                 object : FirstFeatureDependencies {
+                    override val contextProvider: FirstFeatureDeps = appComponent
+                    override val dependencyHolder = holder
+                }
+            }.dependencies
+        }
+
+        SecondFeatureComponentHolder.dependencyProvider = {
+            DependencyHolder1<ApplicationComponent, SecondFeatureDependencies>(
+                api1 = appComponent
+            ) { holder, appComponent ->
+                object : SecondFeatureDependencies {
                     override val contextProvider: FirstFeatureDeps = appComponent
                     override val dependencyHolder = holder
                 }

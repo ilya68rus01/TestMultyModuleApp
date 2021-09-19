@@ -10,9 +10,6 @@ import ilya.khrushchev.firstfeature.navigation.FirstFeatureNavCommandProvider
 @Module
 class FirstFeatureModule {
 
-//    @Binds
-//    fun bindFirstFeature(impl: FirstFeatureNavCommandProviderImpl): FirstFeatureNavCommandProvider
-
     @Provides
     fun provideFragment(): () -> Fragment {
         return {
