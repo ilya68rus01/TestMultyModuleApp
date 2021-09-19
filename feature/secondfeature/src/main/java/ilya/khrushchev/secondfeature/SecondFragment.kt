@@ -7,10 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import ilya.khrushchev.core.App
 import ilya.khrushchev.core.FirstFeatureProvider
+import ilya.khrushchev.secondfeature.di.DaggerSecondFeatureComponent
 
 class SecondFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        DaggerSecondFeatureComponent.factory()
+            .create(dependencies = SecondFeatureComponentHolder.getComponent())
+            .inject(this)
         super.onCreate(savedInstanceState)
     }
 

@@ -5,10 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import ilya.khrushchev.thirdfeature.di.DaggerThirdFeatureComponent
 
 class ThirdFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        DaggerThirdFeatureComponent.factory()
+            .create(ThirdFeatureComponentHolder.getComponent())
+            .inject(this)
         super.onCreate(savedInstanceState)
 
     }
