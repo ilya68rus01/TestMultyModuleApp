@@ -2,16 +2,16 @@ package com.example.moduleinjector
 
 import java.lang.ref.WeakReference
 
-class ComponentHolderDelegate<A : BaseFeatureApi, D : BaseFeatureDependencies, C : A>(
-    private val componentFactory: (D) -> C
-) : ComponentHolder<A, D> {
+class ComponentHolderDelegate<API : BaseFeatureApi, DEPENDENCIES : BaseFeatureDependencies, COMPONENT : API>(
+    private val componentFactory: (DEPENDENCIES) -> COMPONENT
+) : ComponentHolder<API, DEPENDENCIES> {
 
-    override var dependencyProvider: (() -> D)? = null
+    override var dependencyProvider: (() -> DEPENDENCIES)? = null
 
-    private var componentWeakRef: WeakReference<C>? = null
+    private var componentWeakRef: WeakReference<COMPONENT>? = null
 
-    fun getComponentImpl(): C {
-        var component: C? = null
+    fun getComponentImpl(): COMPONENT {
+        var component: COMPONENT? = null
 
         synchronized(this) {
             dependencyProvider?.let { dependencyProvider ->
@@ -26,7 +26,7 @@ class ComponentHolderDelegate<A : BaseFeatureApi, D : BaseFeatureDependencies, C
         return component ?: throw IllegalStateException("Component holder with component factory $componentFactory is not initialized")
     }
 
-    override fun get(): A {
+    override fun get(): API {
         return getComponentImpl()
     }
 }

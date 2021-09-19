@@ -75,6 +75,23 @@ abstract class DependencyHolder3<A1 : BaseFeatureApi, A2 : BaseFeatureApi, A3 : 
     private val api2: A2,
     private val api3: A3,
 ) : BaseDependencyHolder<D> {
+    companion object {
+        operator fun<A1 : BaseFeatureApi, A2 : BaseFeatureApi, A3 : BaseFeatureApi, D : BaseFeatureDependencies> invoke(
+            api1: A1,
+            api2: A2,
+            api3: A3,
+            block: (BaseDependencyHolder<D>, A1, A2, A3) -> D
+        ): BaseDependencyHolder<D> {
+            return object : DependencyHolder3<A1, A2, A3, D>(
+                api1 = api1,
+                api2 = api2,
+                api3 = api3,
+                ){
+                override val block = block
+            }
+        }
+    }
+
     abstract val block: (dependencyHolder: BaseDependencyHolder<D>, A1, A2, A3) -> D
 
     override val dependencies: D
