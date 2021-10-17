@@ -1,1 +1,0 @@
-package ilya.khrushchev.testmultymodule.navigation
