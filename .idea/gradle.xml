@@ -18,7 +18,6 @@
             <option value="$PROJECT_DIR$/feature/secondfeature" />
             <option value="$PROJECT_DIR$/feature/thirdfeature" />
             <option value="$PROJECT_DIR$/moduleinjector" />
-            <option value="$PROJECT_DIR$/navigation" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

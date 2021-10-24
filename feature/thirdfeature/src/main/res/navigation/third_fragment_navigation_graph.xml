@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/third_fragment_navigation_graph"
+    app:startDestination="@id/thirdFragment">
+
+    <fragment
+        android:id="@+id/thirdFragment"
+        android:name="ilya.khrushchev.thirdfeature.ThirdFragment"
+        android:label="fragment_third"
+        tools:layout="@layout/fragment_third">
+        <deepLink
+            app:uri="android-app://test.link.fragment/third"/>
+    </fragment>
+
+</navigation>

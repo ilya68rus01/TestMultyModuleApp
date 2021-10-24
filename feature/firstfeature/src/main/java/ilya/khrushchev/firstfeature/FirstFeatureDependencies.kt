@@ -8,5 +8,4 @@ import ilya.khrushchev.core.providers.NavigationCommand
 
 interface FirstFeatureDependencies : BaseFeatureDependencies {
     val contextProvider: FirstFeatureDeps
-    val navigationCommand: NavigationCommand
 }

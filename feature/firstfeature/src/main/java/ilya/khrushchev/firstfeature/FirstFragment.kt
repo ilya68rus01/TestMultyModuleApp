@@ -6,10 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.net.toUri
 import androidx.fragment.app.FragmentFactory
 import androidx.navigation.fragment.findNavController
 import ilya.khrushchev.firstfeature.di.DaggerFirstFeatureComponent
 import javax.inject.Inject
+import androidx.navigation.fragment.NavHostFragment
+
+import androidx.navigation.NavDeepLinkRequest
+
+
+
 
 class FirstFragment : Fragment() {
 
@@ -34,15 +41,17 @@ class FirstFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_first, container, false)
         val button = view.findViewById<Button>(R.id.to_second_fragment)
         button.setOnClickListener {
-            findNavController().navigate(
-                firstFeatureApi.navigationCommand.navigateFromFirstToSecond().action
-            )
+            val request = NavDeepLinkRequest.Builder
+                .fromUri("http://www.test.link/second".toUri())
+                .build()
+            findNavController().navigate(request)
         }
         val toThirdButton = view.findViewById<Button>(R.id.to_third_fragment)
         toThirdButton.setOnClickListener {
-            findNavController().navigate(
-                firstFeatureApi.navigationCommand.navigateFromFirstToThird().action
-            )
+            val request = NavDeepLinkRequest.Builder
+                .fromUri("http://test.link.fragment/third".toUri())
+                .build()
+            findNavController().navigate(request)
         }
         return view
     }

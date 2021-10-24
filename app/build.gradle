@@ -39,7 +39,6 @@ dependencies {
     implementation project(path: ':feature:firstfeature')
     implementation project(path: ':feature:thirdfeature')
     implementation project(path: ':feature:secondfeature')
-    implementation project(path: ':navigation')
 
     //dagger
     kapt 'com.google.dagger:dagger-compiler:2.34'

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/first_feature_navigation_graph"
+    app:startDestination="@id/firstFragment">
+
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="ilya.khrushchev.firstfeature.FirstFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_first">
+        <deepLink
+            android:id="@+id/firstFragmentDeepLink"
+            app:uri="test.link.fragment/first"/>
+    </fragment>
+
+</navigation>

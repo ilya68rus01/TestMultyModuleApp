@@ -4,8 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Ilya/AndroidStudioProjects/TestMultyModule/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.15729166666666666" />
-        <entry key="feature/firstfeature/src/main/res/layout/fragment_first.xml" value="0.5625" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.11920529801324503" />
+        <entry key="feature/firstfeature/src/main/res/layout/fragment_first.xml" value="0.25" />
+        <entry key="feature/secondfeature/src/main/res/layout/fragment_second.xml" value="0.3697916666666667" />
       </map>
     </option>
   </component>
